@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MusicPlay">
+    <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Music"
+         android:textSize="40sp"
+         android:layout_marginTop="40dp"
+        android:gravity="center"
+         android:id="@+id/tvmusic"
+         app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/songname"
+        android:text="Song Name"
+        app:layout_constraintTop_toBottomOf="@id/tvmusic"
+        android:textSize="30sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:id="@+id/tvtime"
+        app:layout_constraintTop_toBottomOf="@id/songname"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <SeekBar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/songname"
+        app:layout_constraintStart_toEndOf="@id/tvtime"
+        app:layout_constraintEnd_toStartOf="@id/tvend" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End"
+        android:id="@+id/tvend"
+        app:layout_constraintTop_toBottomOf="@id/songname"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_music_note_24"
+        app:layout_constraintTop_toBottomOf="@id/tvtime"
+        android:id="@+id/imgplay"
+        app:layout_constraintStart_toStartOf="parent" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_music_note_24"
+        app:layout_constraintTop_toBottomOf="@id/tvtime"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

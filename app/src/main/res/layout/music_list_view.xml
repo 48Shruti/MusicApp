@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Music name"
+       android:drawableStart="@drawable/baseline_music_note_24"
+       android:textSize="20sp"
+       android:id="@+id/tvmusicview"
+       android:layout_weight="1"
+       android:drawablePadding="30sp"
+       app:layout_constraintTop_toTopOf="parent"/>
+   <ImageButton
+       android:id="@+id/btnplaymusic"
+       android:layout_width="88dp"
+       android:layout_height="wrap_content"
+       android:layout_gravity="right"
+       android:padding="6dp"
+       android:src="@drawable/baseline_play_arrow_24" />
+
+
+</LinearLayout>
