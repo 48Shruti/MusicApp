@@ -10,12 +10,15 @@ import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.NonDisposableHandle.parent
 interface MusicClick{
     fun OnSongPlayClick(musicContent: MusicContent)
+
 }
 class MusicAdapter(var musicInterface: MusicClick) : RecyclerView.Adapter<MusicAdapter.ViewHolder>() {
     var item : ArrayList<MusicContent> = arrayListOf()
     class ViewHolder(var view : View) :RecyclerView.ViewHolder(view){
         var songname = view.findViewById<TextView>(R.id.tvmusicview)
+        var titlename = view.findViewById<TextView>(R.id.songname)
         var  musicClick = view.findViewById<ImageButton>(R.id.btnplaymusic)
+        var musicPlay =view.findViewById<ImageButton>(R.id.musicPlay)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,15 +35,12 @@ class MusicAdapter(var musicInterface: MusicClick) : RecyclerView.Adapter<MusicA
         holder.musicClick.setOnClickListener{
             musicInterface.OnSongPlayClick(item[position])
         }
-
     }
     fun updateList( musicContent: ArrayList<MusicContent>){
         this.item.clear()
         this.item.addAll(musicContent)
         notifyDataSetChanged()
     }
-
-
 }
 
 

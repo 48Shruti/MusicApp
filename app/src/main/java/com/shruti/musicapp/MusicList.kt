@@ -80,7 +80,7 @@ class MusicList : Fragment(), MusicClick {
     }
 
     override fun OnSongPlayClick(musicContent: MusicContent) {
-
+        mainActivity.musicContent = musicContent
         if(mainActivity.mediaPlayer.isPlaying){
             mainActivity.mediaPlayer.stop()
             mainActivity.mediaPlayer.reset()
@@ -90,4 +90,6 @@ class MusicList : Fragment(), MusicClick {
             mainActivity.mediaPlayer.start()
         }
     }
+
+
 }

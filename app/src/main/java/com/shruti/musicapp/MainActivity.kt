@@ -16,6 +16,7 @@ import com.shruti.musicapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     var binding: ActivityMainBinding? = null
     var viewModel : MusicViewModel ?= null
+    var musicContent : MusicContent ?= null
     lateinit var navController : NavController
     var permission = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
         if (it) {
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
     var musicList = ArrayList<MusicContent>()
     var mediaPlayer = MediaPlayer()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -34,15 +36,13 @@ class MainActivity : AppCompatActivity() {
         binding?.bottomnav?.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.playist -> {
-                    navController?.navigate(R.id.musicList)
+                    navController.navigate(R.id.musicList)
                 }
-
                 R.id.playingmusic -> {
-                    navController?.navigate(R.id.musicPlay)
+                    navController.navigate(R.id.musicPlay)
                 }
             }
             return@setOnItemSelectedListener true
-
         }
     }
 
@@ -60,11 +60,11 @@ class MainActivity : AppCompatActivity() {
             permission.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
         }
     }
-
     fun getSongs() {
         val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
         val selection = MediaStore.Audio.Media.IS_MUSIC
         val cursor: Cursor? = contentResolver?.query(uri, null, selection, null, null)
+        musicList.clear()
         if (cursor?.moveToFirst() == true) {
             while (cursor.isLast == false) {
                 musicList.add(
@@ -75,10 +75,10 @@ class MainActivity : AppCompatActivity() {
                         storageLocation = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA))
                     )
                 )
+
                 cursor.moveToNext()
             }
         }
-
         viewModel?.musicContentList?.value = musicList
     }
 }
